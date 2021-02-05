@@ -2,17 +2,38 @@
 
 ## Documentation
 
-This is simple pattern project bootstrap template.
+This is code editor pattern based on CodeJar and PrismJS.
 
-Usage:
-
-    ./create.sh PROJECTNAME
-
-This will create a directory within this directory with the name `pat-PROJECTNAME`.
-You can use it for developing a new pattern.
 
 ### Options reference
 
-| Property       | Default Value | Values | Type              | Description                   |
-| -------------- | ------------- | ------ | ----------------- | ----------------------------- |
-| example_option | [1, 2, 3]     |        | Array of integers | Example configuration option. |
+| Property       | Default Value | Type              | Description                   |
+| -------------- | ------------- | ----------------- | ----------------------------- |
+| language       | null          | String, null      | Programming language to use.  |
+| linenumbres    | true          | Boolean           | Show line numbers.            |
+| theme          | null          | String            | Name of PrismJS theme.        |
+| tab            | "    "        | String            | Characters to use as tab.     |
+| indent-on      | {$            | String            | Regex pattern where the next line is indented. |
+| spellcheck     | false         | Boolean           | Activate spellchecking.       |
+| catch-tab      | true          | Boolean           | Catch a tab keystroke and indent. |
+| preserve-indent | true         | Boolean           | Preserve indentation of original source. |
+| add-closing    | true          | Boolean           | Automatically add closing brackets. |
+| history        | true          | Boolean           | Activate undo history.        |
+
+
+## Examples
+
+### Invocation on a contenteditable div
+
+<div class="pat-code-editor" data-pat-code-editor="language: javascript" contenteditable>
+import Pattern from "./code-editor";
+Pattern.init(document.querySelector(".pat-code-editor"));
+</div>
+
+```html
+<div class="pat-code-editor" data-pat-code-editor="language: javascript" contenteditable>
+import Pattern from "./code-editor";
+Pattern.init(document.querySelector(".pat-code-editor"));
+</div>
+```
+
