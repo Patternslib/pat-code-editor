@@ -36,8 +36,16 @@ export default Base.extend({
             prism_wrapper = linenumbers(Prism.highlightElement);
         }
 
+        let el = this.el;
+        if (["textarea", "input"].includes(this.el.nodeName.toLowerCase())) {
+            el = document.createElement("pre");
+            el.innerHTML = `<code contenteditable>${this.el.value}</code>`;
+            this.el.parentNode.insertBefore(el, this.el);
+            this.el.setAttribute("hidden", "");
+        }
+
         if (this.options.language) {
-            this.el.classList.add(`language-${this.options.language}`);
+            el.classList.add(`language-${this.options.language}`);
         }
 
         import(
@@ -56,6 +64,14 @@ export default Base.extend({
             history: this.options.history,
         };
 
-        this.codeeditor = CodeJar(this.el, prism_wrapper, config);
+        this.codeeditor = CodeJar(el, prism_wrapper, config);
+
+        if (el !== this.el) {
+            // Update <textarea> or <input>, if one of these were the
+            // initializing elements.
+            this.codeeditor.onUpdate((code) => {
+                this.el.value = code;
+            });
+        }
     },
 });

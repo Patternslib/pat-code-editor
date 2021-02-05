@@ -37,3 +37,23 @@ Pattern.init(document.querySelector(".pat-code-editor"));
 </div>
 ```
 
+### Invocation on a textarea
+
+This will create a div where the code editor is finally initialized and changes are synchronized back to the text editor.
+
+<textarea class="pat-code-editor" data-pat-code-editor="language: css">
+body {
+  background-color: black;
+  color: blue;
+}
+</textarea>
+
+```html
+<textarea class="pat-code-editor" data-pat-code-editor="language: css">
+body {
+  background-color: black;
+  color: blue;
+}
+</textarea>
+```
+
