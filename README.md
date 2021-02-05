@@ -1,4 +1,4 @@
-# pat-codeeditor
+# pat-code-editor
 
 ## Documentation
 

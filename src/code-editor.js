@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime"; // needed for ``await`` support
 import Base from "patternslib/src/core/base";
 import Parser from "patternslib/src/core/parser";
 
-const parser = new Parser("codeeditor");
+const parser = new Parser("code-editor");
 
 parser.addArgument("language", null); // programming language to use.
 parser.addArgument("linenumbers", true);
@@ -18,8 +18,8 @@ parser.addArgument("add-closing", true);
 parser.addArgument("history", true);
 
 export default Base.extend({
-    name: "codeeditor",
-    trigger: ".pat-codeeditor",
+    name: "code-editor",
+    trigger: ".pat-code-editor",
 
     async init() {
         this.options = parser.parse(this.el, this.options);

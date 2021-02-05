@@ -1,5 +1,5 @@
 {
-  "name": "pat-codeeditor",
+  "name": "pat-code-editor",
   "version": "1.0.0",
   "description": "A pattern for ...",
   "author": {
@@ -7,8 +7,8 @@
     "email": "dev@syslab.com"
   },
   "license": "MIT",
-  "homepage": "https://gitub.com/patternslib/pat-codeeditor",
-  "main": "./src/codeeditor.js",
+  "homepage": "https://gitub.com/patternslib/pat-code-editor",
+  "main": "./src/code-editor.js",
   "dependencies": {
     "codejar": "^3.3.0",
     "patternslib": "https://github.com/Patternslib/Patterns#master",

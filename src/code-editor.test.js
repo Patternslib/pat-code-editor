@@ -1,17 +1,17 @@
 import "regenerator-runtime/runtime"; // needed for ``await`` support
-import pattern from "./codeeditor";
+import pattern from "./code-editor";
 import utils from "patternslib/src/core/utils";
 
-describe("pat-codeeditor", () => {
+describe("pat-code-editor", () => {
     beforeEach(() => {
         document.body.innerHTML = "";
     });
 
     it("is initialized correctly", async (done) => {
-        document.body.innerHTML = `<div class="pat-codeeditor" />`;
+        document.body.innerHTML = `<div class="pat-code-editor" />`;
 
         const instance = pattern.init(
-            document.querySelector(".pat-codeeditor")
+            document.querySelector(".pat-code-editor")
         );
         await utils.timeout(1);
 
