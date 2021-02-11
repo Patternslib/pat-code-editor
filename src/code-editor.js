@@ -2,8 +2,7 @@ import "regenerator-runtime/runtime"; // needed for ``await`` support
 import Base from "patternslib/src/core/base";
 import Parser from "patternslib/src/core/parser";
 
-const parser = new Parser("code-editor");
-
+export const parser = new Parser("code-editor");
 parser.addArgument("language", null); // programming language to use.
 parser.addArgument("linenumbers", true);
 parser.addArgument("theme", null); // theme to use.
