@@ -55,7 +55,7 @@ export default Base.extend({
 
         const config = {
             tab: this.options.tab,
-            indentOn: this.options.indentOn,
+            indentOn: new RegExp(this.options.indentOn),
             spellcheck: this.options.spellcheck,
             catchTab: this.options.catchTab,
             preserveIdent: this.options.preserveIdent,
