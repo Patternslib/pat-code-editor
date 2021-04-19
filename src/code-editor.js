@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime"; // needed for ``await`` support
-import Base from "patternslib/src/core/base";
-import Parser from "patternslib/src/core/parser";
+import Base from "@patternslib/patternslib/src/core/base";
+import Parser from "@patternslib/patternslib/src/core/parser";
 
 export const parser = new Parser("code-editor");
 parser.addArgument("language", null); // programming language to use.
@@ -23,10 +23,8 @@ export default Base.extend({
     async init() {
         this.options = parser.parse(this.el, this.options);
 
-        let CodeJar = await import("codejar");
-        CodeJar = CodeJar.CodeJar;
-        let Prism = await import("prismjs");
-        Prism = Prism.default;
+        const CodeJar = (await import("codejar")).CodeJar;
+        const Prism = (await import("prismjs")).default;
 
         let prism_wrapper = (...args) => Prism.highlightElement(...args);
         if (this.options.linenumbers) {
