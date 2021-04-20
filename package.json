@@ -6,7 +6,7 @@
     "main": "./src/code-editor.js",
     "dependencies": {
         "@patternslib/patternslib": "4",
-        "codejar": "^3.3.0",
+        "codejar": "^3.4.0",
         "prismjs": "^1.23.0"
     },
     "devDependencies": {
