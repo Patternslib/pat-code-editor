@@ -8,5 +8,7 @@ module.exports = {
     moduleNameMapper: {
         "\\.(css|less|sass|scss)$": "identity-obj-proxy",
     },
-    transformIgnorePatterns: ["/node_modules/(?!.*patternslib/*).+\\.[t|j]sx?$"],
+    transformIgnorePatterns: [
+        "/node_modules/(?!.*(patternslib|codejar)/*).+\\.[t|j]sx?$",
+    ],
 };

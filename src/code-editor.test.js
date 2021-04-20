@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime"; // needed for ``await`` support
 import pattern from "./code-editor";
-import utils from "patternslib/src/core/utils";
+import utils from "@patternslib/patternslib/src/core/utils";
 
 describe("pat-code-editor", () => {
     beforeEach(() => {
@@ -10,12 +10,10 @@ describe("pat-code-editor", () => {
     it("is initialized correctly", async (done) => {
         document.body.innerHTML = `<div class="pat-code-editor" />`;
 
-        const instance = pattern.init(
-            document.querySelector(".pat-code-editor")
-        );
+        pattern.init(document.querySelector(".pat-code-editor"));
         await utils.timeout(1);
 
-        expect().toBe("");
+        expect(document.querySelectorAll(".codejar-linenumbers").length).toBe(1);
 
         done();
     });
