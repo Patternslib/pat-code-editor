@@ -1,3 +1,14 @@
+## [1.1.0](https://github.com/patternslib/pat-code-editor/compare/1.0.1...1.1.0) (2021-06-15)
+
+
+### Maintenance
+
+* Test updates after jest upgrade. ([728fb34](https://github.com/patternslib/pat-code-editor/commit/728fb34723b8892660eacee86e745f98cf963b95))
+* **dependencies:** Depend on Patternslib v4.4.0. ([05d6d16](https://github.com/patternslib/pat-code-editor/commit/05d6d16c75199ec21341f5b42a30d36b62defa4b))
+* **dependencies:** Upgrade dependencies on minor+patch level. ([f40a3a4](https://github.com/patternslib/pat-code-editor/commit/f40a3a4bfd9c0242ce5c444f9240675747a7f7de))
+* **webpack:** Adapt start script to recent dependency changes. ([3815a2d](https://github.com/patternslib/pat-code-editor/commit/3815a2ddbb5e4724d8d90d834db85a9544f38dd8))
+* **webpack:** Simplify webpack. ([422d190](https://github.com/patternslib/pat-code-editor/commit/422d190b49cd1972813d9d194c208870c2da37f8))
+
 ### [1.0.1](https://github.com/patternslib/pat-code-editor/compare/1.0.0...1.0.1) (2021-04-23)
 
 
