@@ -7,14 +7,12 @@ describe("pat-code-editor", () => {
         document.body.innerHTML = "";
     });
 
-    it("is initialized correctly", async (done) => {
+    it("is initialized correctly", async () => {
         document.body.innerHTML = `<div class="pat-code-editor" />`;
 
         pattern.init(document.querySelector(".pat-code-editor"));
         await utils.timeout(1);
 
         expect(document.querySelectorAll(".codejar-linenumbers").length).toBe(1);
-
-        done();
     });
 });
