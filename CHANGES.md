@@ -1,3 +1,13 @@
+## [1.2.0](https://github.com/patternslib/pat-code-editor/compare/1.1.0...1.2.0) (2021-09-22)
+
+
+### Maintenance
+
+* Align with build changes from Patternslib v5. ([1d6cf58](https://github.com/patternslib/pat-code-editor/commit/1d6cf58187b6927f1e268265c520edf8e98c5e59))
+* Set json also to 4-space indentation. ([c9cf8ef](https://github.com/patternslib/pat-code-editor/commit/c9cf8efc8b20c4d88ebd4e8b815bff638d2244c2))
+* Upgrade dependencies. ([95d899e](https://github.com/patternslib/pat-code-editor/commit/95d899ea0846f6fc851f8aded531ebb0ca2ccf70))
+* Use babel config from Patternslib directly. ([7da4f83](https://github.com/patternslib/pat-code-editor/commit/7da4f8349106a07e574b0588e65dbdd7068cf6b8))
+
 ## [1.1.0](https://github.com/patternslib/pat-code-editor/compare/1.0.1...1.1.0) (2021-06-15)
 
 
