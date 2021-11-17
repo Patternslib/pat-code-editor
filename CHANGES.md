@@ -1,3 +1,18 @@
+## [2.0.0](https://github.com/patternslib/pat-code-editor/compare/1.2.0...2.0.0) (2021-11-17)
+
+
+### Breaking Changes
+
+* Upgrade to Webpack 5. ([8390e34](https://github.com/patternslib/pat-code-editor/commit/8390e34fee927d67218607e0f9d36d114ad4fb08))
+
+
+
+### Maintenance
+
+* **build:** Extend Patternslib release-it config file. ([b017c64](https://github.com/patternslib/pat-code-editor/commit/b017c644965c92eb13dd7dfb5297ce1cd41dc6e8))
+
+* **build:** Release on GitHub releases. ([dcd3718](https://github.com/patternslib/pat-code-editor/commit/dcd371839a80b259a15b98be45c3f442ee5ab81d))
+
 ## [1.2.0](https://github.com/patternslib/pat-code-editor/compare/1.1.0...1.2.0) (2021-09-22)
 
 
