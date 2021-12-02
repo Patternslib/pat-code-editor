@@ -5,6 +5,28 @@
 This is code editor pattern based on CodeJar and PrismJS.
 
 
+---
+
+**Note:**
+
+When prefilling the textarea, please add HTML escaped content to the template to avoid any XSS security issues or nesting errors with existing HTML.
+
+Example to escape content in Python:
+
+    import html
+    escaped_html = html.escape(unescaped_html)
+
+
+Example to escape content in JavaScript:
+
+    const escaped_html = unescaped_html
+        .replaceAll("&amp;", "&")
+        .replaceAll("&lt;", "<")
+        .replaceAll("&gt;", ">")
+        .replaceAll("&quot;", '"');
+
+---
+
 ### Options reference
 
 | Property       | Default Value | Type              | Description                   |

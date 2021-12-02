@@ -19,4 +19,26 @@ describe("pat-code-editor", () => {
         expect(document.querySelectorAll("pre code").length).toBe(1);
         expect(document.querySelector("textarea").getAttribute("hidden")).toBe("");
     });
+
+    it("handles escaped content correctly", async () => {
+        const unescaped = `<hello attribute="value">this & that</hello>`;
+        const escaped = `&lt;hello attribute=&quot;value&quot;&gt;this &amp; that&lt;/hello&gt;`;
+
+        document.body.innerHTML = `
+            <textarea
+                class="pat-code-editor"
+                data-pat-code-editor="language: javascript">
+                ${escaped}
+            </textarea>
+        `;
+
+        new Pattern(document.querySelector(".pat-code-editor"));
+        await utils.timeout(1);
+
+        const editor_el = document.querySelector("pre code");
+        expect(editor_el.textContent.trim()).toBe(unescaped);
+
+        expect(editor_el.querySelectorAll(".token").length).toBeGreaterThan(0);
+        expect(editor_el.innerHTML.includes("&lt;")).toBe(true);
+    });
 });

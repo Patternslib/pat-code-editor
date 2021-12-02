@@ -1,6 +1,7 @@
 import "regenerator-runtime/runtime"; // needed for ``await`` support
 import Base from "@patternslib/patternslib/src/core/base";
 import Parser from "@patternslib/patternslib/src/core/parser";
+import utils from "@patternslib/patternslib/src/core/utils";
 
 export const parser = new Parser("code-editor");
 parser.addArgument("language", null); // programming language to use.
@@ -35,9 +36,17 @@ export default Base.extend({
 
         let el = this.el;
         if (["textarea", "input"].includes(this.el.nodeName.toLowerCase())) {
-            el = document.createElement("pre");
-            el.innerHTML = `<code contenteditable>${this.el.value}</code>`;
-            this.el.parentNode.insertBefore(el, this.el);
+            const unescaped_html = utils.unescape_html(this.el.value);
+            const language_class = this.options.language
+                ? `language-${this.options.language}`
+                : "";
+            const pre_el = document.createElement("pre");
+            el = document.createElement("code");
+            el.setAttribute("class", language_class);
+            el.setAttribute("contenteditable", "");
+            el.textContent = unescaped_html;
+            pre_el.append(el);
+            this.el.parentNode.insertBefore(pre_el, this.el);
             this.el.setAttribute("hidden", "");
         }
 
