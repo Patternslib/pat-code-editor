@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8"
+    />
     <title>code editor demo</title>
-    <script src="/dist/bundle.js" type="text/javascript" charset="utf-8"></script>
+    <script charset="utf-8"
+            src="/dist/bundle.js"
+            type="text/javascript"
+    ></script>
   </head>
   <body>
 
-    <div class="pat-code-editor" data-pat-code-editor="language: javascript" contenteditable>
-    import nix from "pkay";
-    </div>
+    <h2>JavaScript example with textarea</h2>
+    <textarea class="pat-code-editor"
+         autocomplete="off"
+         data-pat-code-editor="language: javascript; theme: okaidia"
+    >
+import pattern from "./src/code-editor";
 
-    <textarea class="pat-code-editor" data-pat-code-editor="language: css">
-    body {
-      background-color: black;
-    }
+def init(el) {
+    const editor = new pattern(el);
+}
+
+init(document.querySelector(".pat-code-editor"));
+    </textarea>
+
+    <h2>Python example with content editable</h2>
+    <pre><code class="pat-code-editor"
+         autocomplete="off"
+         contenteditable=""
+         data-pat-code-editor="language: python; theme: okaidia"
+    >
+import this;
+
+def fun(val):
+    print(val*3)
+
+fun("helo, ")
+    </code></pre>
+
+    <h2>CSS example with textarea</h2>
+    <textarea class="pat-code-editor"
+              autocomplete="off"
+              data-pat-code-editor="language: css; tab: '  '; theme: okaidia"
+    >
+body {
+  background-color: red;
+  color: blue;
+}
+    </textarea>
+
+    <h2>XML example with textarea</h2>
+    <textarea class="pat-code-editor"
+              autocomplete="off"
+              data-pat-code-editor="language: xml; tab: '  '; theme: okaidia"
+    >
+&lt;some level="1"&gt;
+ &lt;xml level="2"&gt;
+   &lt;example level="3"&gt;
+       some ampersands &amp;&amp;&amp;
+   &lt;/example&gt;
+ &lt;/xml&gt;
+&lt;/some&gt;
     </textarea>
 
   </body>
