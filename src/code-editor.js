@@ -5,7 +5,7 @@ import utils from "@patternslib/patternslib/src/core/utils";
 
 export const parser = new Parser("code-editor");
 parser.addArgument("language", null); // programming language to use.
-parser.addArgument("linenumbers", true);
+parser.addArgument("linenumbers", false);
 parser.addArgument("theme", null); // theme to use.
 
 // CodeJar options
@@ -27,10 +27,9 @@ export default Base.extend({
         const CodeJar = (await import("codejar")).CodeJar;
         const Prism = (await import("prismjs")).default;
 
-        let prism_wrapper = (...args) => Prism.highlightElement(...args);
+        let prism_wrapper = Prism.highlightElement;
         if (this.options.linenumbers) {
-            let linenumbers = await import("codejar/linenumbers");
-            linenumbers = linenumbers.withLineNumbers;
+            const linenumbers = (await import("codejar/linenumbers")).withLineNumbers;
             prism_wrapper = linenumbers(Prism.highlightElement);
         }
 
@@ -54,11 +53,14 @@ export default Base.extend({
             el.classList.add(`language-${this.options.language}`);
         }
 
+        el.classList.add(`theme-${this.options.theme || "default"}`);
+
         import(
             `prismjs/themes/prism${
                 this.options.theme ? "-" + this.options.theme : ""
             }.css`
         );
+        //import("./code-editor.scss");
 
         const config = {
             tab: this.options.tab,

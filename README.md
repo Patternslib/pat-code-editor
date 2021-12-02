@@ -32,7 +32,7 @@ Example to escape content in JavaScript:
 | Property       | Default Value | Type              | Description                   |
 | -------------- | ------------- | ----------------- | ----------------------------- |
 | language       | null          | String, null      | Programming language to use.  |
-| linenumbres    | true          | Boolean           | Show line numbers.            |
+| linenumbers    | false         | Boolean           | Show line numbers.            |
 | theme          | null          | String            | Name of PrismJS theme.        |
 | tab            | "    "        | String            | Characters to use as tab.     |
 | indent-on      | {$            | String            | Regex pattern where the next line is indented. |
