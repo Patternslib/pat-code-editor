@@ -5,14 +5,36 @@
 This is code editor pattern based on CodeJar and PrismJS.
 
 
+---
+
+**Note:**
+
+When prefilling the textarea, please add HTML escaped content to the template to avoid any XSS security issues or nesting errors with existing HTML.
+
+Example to escape content in Python:
+
+    import html
+    escaped_html = html.escape(unescaped_html)
+
+
+Example to escape content in JavaScript:
+
+    const escaped_html = unescaped_html
+        .replaceAll("&amp;", "&")
+        .replaceAll("&lt;", "<")
+        .replaceAll("&gt;", ">")
+        .replaceAll("&quot;", '"');
+
+---
+
 ### Options reference
 
 | Property       | Default Value | Type              | Description                   |
 | -------------- | ------------- | ----------------- | ----------------------------- |
 | language       | null          | String, null      | Programming language to use.  |
-| linenumbres    | true          | Boolean           | Show line numbers.            |
+| linenumbers    | false         | Boolean           | Show line numbers.            |
 | theme          | null          | String            | Name of PrismJS theme.        |
-| tab            | "    "        | String            | Characters to use as tab.     |
+| tab            | "'    '"      | String            | Characters to use as tab. Use "\t" for a tab character, spaces in quotes (e.g. "'  '") for spaces |
 | indent-on      | {$            | String            | Regex pattern where the next line is indented. |
 | spellcheck     | false         | Boolean           | Activate spellchecking.       |
 | catch-tab      | true          | Boolean           | Catch a tab keystroke and indent. |

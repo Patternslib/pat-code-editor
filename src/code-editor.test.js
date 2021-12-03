@@ -1,5 +1,5 @@
 import "regenerator-runtime/runtime"; // needed for ``await`` support
-import pattern from "./code-editor";
+import Pattern from "./code-editor";
 import utils from "@patternslib/patternslib/src/core/utils";
 
 describe("pat-code-editor", () => {
@@ -8,11 +8,37 @@ describe("pat-code-editor", () => {
     });
 
     it("is initialized correctly", async () => {
-        document.body.innerHTML = `<div class="pat-code-editor" />`;
+        document.body.innerHTML = `
+            <textarea
+                class="pat-code-editor"
+                data-pat-code-editor="language: javascript"/>`;
 
-        pattern.init(document.querySelector(".pat-code-editor"));
+        new Pattern(document.querySelector(".pat-code-editor"));
         await utils.timeout(1);
 
-        expect(document.querySelectorAll(".codejar-linenumbers").length).toBe(1);
+        expect(document.querySelectorAll("pre code").length).toBe(1);
+        expect(document.querySelector("textarea").getAttribute("hidden")).toBe("");
+    });
+
+    it("handles escaped content correctly", async () => {
+        const unescaped = `<hello attribute="value">this & that</hello>`;
+        const escaped = `&lt;hello attribute=&quot;value&quot;&gt;this &amp; that&lt;/hello&gt;`;
+
+        document.body.innerHTML = `
+            <textarea
+                class="pat-code-editor"
+                data-pat-code-editor="language: javascript">
+                ${escaped}
+            </textarea>
+        `;
+
+        new Pattern(document.querySelector(".pat-code-editor"));
+        await utils.timeout(1);
+
+        const editor_el = document.querySelector("pre code");
+        expect(editor_el.textContent.trim()).toBe(unescaped);
+
+        expect(editor_el.querySelectorAll(".token").length).toBeGreaterThan(0);
+        expect(editor_el.innerHTML.includes("&lt;")).toBe(true);
     });
 });
