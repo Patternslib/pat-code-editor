@@ -1,3 +1,26 @@
+## [2.1.0](https://github.com/patternslib/pat-code-editor/compare/2.0.0...2.1.0) (2021-12-03)
+
+
+### Bug Fixes
+
+* Deactivate line numbers - They do not work nicely with a <pre><code> structure yet. ([250149f](https://github.com/patternslib/pat-code-editor/commit/250149f6f9c364c7e468ff110f4053c49c4b172f))
+
+* Escape HTML when initializing the editor. ([dcef878](https://github.com/patternslib/pat-code-editor/commit/dcef87852148109363dc83badcdfff03a58e873f))
+
+* Fix the tab option and allow tabs as \t and spaces in quotes as values. ([a01aedb](https://github.com/patternslib/pat-code-editor/commit/a01aedb8534159f5b30485266b2b30577372635c))
+
+
+
+### Maintenance
+
+* Better examples. ([b2bcb31](https://github.com/patternslib/pat-code-editor/commit/b2bcb3197b1250b94fb9744f7de750ada7f1b404))
+
+* **dependencies:** Upgrade dependencies. ([82ce7fb](https://github.com/patternslib/pat-code-editor/commit/82ce7fbc627b5de77ef9e9f4948d58efda53bf71))
+
+* **dependencies:** Upgrade Patternslib to 6.2.0 due to dependency on escape/unescape utility methods. ([6e14809](https://github.com/patternslib/pat-code-editor/commit/6e14809cfda6aad4ac7f5b892351b18ced5d0080))
+
+* **tests:** Improve tests. ([19f9c2e](https://github.com/patternslib/pat-code-editor/commit/19f9c2e96e9c0f8f5cc2a7614f544a88432c7387))
+
 ## [2.0.0](https://github.com/patternslib/pat-code-editor/compare/1.2.0...2.0.0) (2021-11-17)
 
 
