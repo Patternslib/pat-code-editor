@@ -62,8 +62,15 @@ export default Base.extend({
         );
         //import("./code-editor.scss");
 
+        // Allow spaces withing quotes to be added as tab argument.
+        // Replace escaped tab character with real tab.
+        const tab = this.options.tab
+            .replace(/'/g, "") // Allow spaces within quotes
+            .replace(/"/g, "")
+            .replace(/\\t/g, "\t"); // Replace double escaped tab character
+
         const config = {
-            tab: this.options.tab,
+            tab: tab,
             indentOn: new RegExp(this.options.indentOn),
             spellcheck: this.options.spellcheck,
             catchTab: this.options.catchTab,

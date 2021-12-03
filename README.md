@@ -34,7 +34,7 @@ Example to escape content in JavaScript:
 | language       | null          | String, null      | Programming language to use.  |
 | linenumbers    | false         | Boolean           | Show line numbers.            |
 | theme          | null          | String            | Name of PrismJS theme.        |
-| tab            | "    "        | String            | Characters to use as tab.     |
+| tab            | "'    '"      | String            | Characters to use as tab. Use "\t" for a tab character, spaces in quotes (e.g. "'  '") for spaces |
 | indent-on      | {$            | String            | Regex pattern where the next line is indented. |
 | spellcheck     | false         | Boolean           | Activate spellchecking.       |
 | catch-tab      | true          | Boolean           | Catch a tab keystroke and indent. |
