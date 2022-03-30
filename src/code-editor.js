@@ -43,6 +43,7 @@ export default Base.extend({
             el = document.createElement("code");
             el.setAttribute("class", language_class);
             el.setAttribute("contenteditable", "");
+            el.style.display = "block";
             el.textContent = unescaped_html;
             pre_el.append(el);
             this.el.parentNode.insertBefore(pre_el, this.el);
