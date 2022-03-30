@@ -1,4 +1,23 @@
-## [2.1.0](https://github.com/patternslib/pat-code-editor/compare/2.0.0...2.1.0) (2021-12-03)
+
+
+### [2.1.1](https://github.com/patternslib/pat-code-editor/compare/2.1.0...2.1.1) (2022-03-30)
+
+
+### Bug Fixes
+
+* Fix demo for correct bundle location. ([88fafab](https://github.com/patternslib/pat-code-editor/commit/88fafab775ab728ede30dfdf39694ee5de14f6c2))
+
+* Set the editor to display-block to always show a cursor, even with not contents. ([3b32570](https://github.com/patternslib/pat-code-editor/commit/3b325709c8e5e83fe598043232526ac3ae44930f))
+
+
+
+### Maintenance
+
+* Add but don't use code-editor.scss which should show line-numbers but is not working yet. ([e6989ef](https://github.com/patternslib/pat-code-editor/commit/e6989ef1a5017c99acd06c0ab788c0a0ac0af4a7))
+
+* Upgrade dependencies. ([8228097](https://github.com/patternslib/pat-code-editor/commit/8228097f1d15edb023efd47b1bfb5386c2e45b80))
+
+* **webpack:** Configure devServer static directory. ([b9ef4c7](https://github.com/patternslib/pat-code-editor/commit/b9ef4c792e1570dcab54e8f4ca2c5d1d43007d4b))## [2.1.0](https://github.com/patternslib/pat-code-editor/compare/2.0.0...2.1.0) (2021-12-03)
 
 
 ### Bug Fixes
@@ -87,4 +106,3 @@
 
 
 - Initial release.
-
