@@ -41,4 +41,29 @@ describe("pat-code-editor", () => {
         expect(editor_el.querySelectorAll(".token").length).toBeGreaterThan(0);
         expect(editor_el.innerHTML.includes("&lt;")).toBe(true);
     });
+
+    it("Emits input events on update.", async () => {
+        document.body.innerHTML = `
+            <textarea class="pat-code-editor"></textarea>
+        `;
+
+        const el = document.querySelector(".pat-code-editor");
+
+        new Pattern(el);
+        await utils.timeout(1);
+
+        const editor_el = document.querySelector("pre code");
+
+        let changed = false;
+        el.addEventListener("input", () => {
+            changed = true;
+        });
+
+        editor_el.innerHTML = "okay-ish";
+        editor_el.dispatchEvent(new Event("keyup")); // codejar listens on keyup.
+        await utils.timeout(1);
+
+        expect(el.value).toBe("okay-ish");
+        expect(changed).toBe(true);
+    });
 });
