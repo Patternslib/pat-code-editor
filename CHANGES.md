@@ -1,6 +1,11 @@
 
 
-### [2.1.1](https://github.com/patternslib/pat-code-editor/compare/2.1.0...2.1.1) (2022-03-30)
+### [2.1.2](https://github.com/patternslib/pat-code-editor/compare/2.1.1...2.1.2) (2022-04-09)
+
+
+### Bug Fixes
+
+* Dispatch input event after content has changed. This is also necessary for pat-autosubmit to work. ([602fd86](https://github.com/patternslib/pat-code-editor/commit/602fd86b7d3b6544219f7f1cc3acb1989fd1a7cf))### [2.1.1](https://github.com/patternslib/pat-code-editor/compare/2.1.0...2.1.1) (2022-03-30)
 
 
 ### Bug Fixes
