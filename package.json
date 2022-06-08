@@ -5,9 +5,11 @@
     "license": "MIT",
     "main": "./src/code-editor.js",
     "dependencies": {
-        "@patternslib/patternslib": "^7.4.0",
         "codejar": "^3.5.0",
         "prismjs": "^1.27.0"
+    },
+    "peerDependencies": {
+        "@patternslib/patternslib": "*"
     },
     "devDependencies": {
         "@babel/core": "^7.17.8",
