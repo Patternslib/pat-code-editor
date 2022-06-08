@@ -5,8 +5,8 @@
     "license": "MIT",
     "main": "./src/code-editor.js",
     "dependencies": {
-        "codejar": "^3.5.0",
-        "prismjs": "^1.27.0"
+        "codejar": "^3.6.0",
+        "prismjs": "^1.28.0"
     },
     "peerDependencies": {
         "@patternslib/patternslib": "*"
