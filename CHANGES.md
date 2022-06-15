@@ -1,4 +1,62 @@
+# Changelog
 
+
+
+## [3.0.0-alpha.0](https://github.com/patternslib/pat-code-editor/compare/2.1.2...3.0.0-alpha.0) (2022-06-15)
+
+
+### Features
+
+
+* **Build:** Build module federation enabled bundles. ([55c279a](https://github.com/patternslib/pat-code-editor/commit/55c279a36e15c7d9ebd9e5ede85ff0de9abb7d4d))
+
+
+### Breaking Changes
+
+
+* Depend on @patternslib/dev and extend config from there. ([e5fa5fb](https://github.com/patternslib/pat-code-editor/commit/e5fa5fb983ff2a68687dcbf054ee014149f756dd))
+
+* Extend babel config from @patternslib/dev. ([0953950](https://github.com/patternslib/pat-code-editor/commit/095395029ece249e651a70959dee226da30af59b))
+
+* Extend commitlint config from @patternslib/dev. ([d60483d](https://github.com/patternslib/pat-code-editor/commit/d60483d7f47b7298088ac421b8f9a54b8cfba462))
+
+* Extend eslint config from @patternslib/dev. ([c81f0b8](https://github.com/patternslib/pat-code-editor/commit/c81f0b8109e74227e8659d329104f9ef6a942064))
+
+* Extend jest config from @patternslib/dev. ([e0261e9](https://github.com/patternslib/pat-code-editor/commit/e0261e964f864e54507c49e7e23a5a771f972487))
+
+* Extend Makefile from @patternslib/dev. ([88f26d6](https://github.com/patternslib/pat-code-editor/commit/88f26d61232cfdf703655204f2e1f3c89def0b18))
+
+* Extend prettier config from @patternslib/dev. ([6967292](https://github.com/patternslib/pat-code-editor/commit/696729242da0a0702f03b43468a0526162bdbc98))
+
+* Extend release-it config from @patternslib/dev. ([f5f6667](https://github.com/patternslib/pat-code-editor/commit/f5f66675e30d68282f63b9f4ad08754999c7dc8e))
+
+* Extend webpack config from @patternslib/dev. ([6f50d8d](https://github.com/patternslib/pat-code-editor/commit/6f50d8dc2a39b8b195d2e7a00dd43e0a9b65dd0b))
+
+
+### Maintenance
+
+
+* **build:** Add build:dev script to package.json to create a unminified development build. ([74b25b9](https://github.com/patternslib/pat-code-editor/commit/74b25b9434fe1bbe861bf408b3d2609e44ea4f95))
+
+* **Build:** @patternslib/patternslib as peerDependency. ([6fb7778](https://github.com/patternslib/pat-code-editor/commit/6fb77784f9acd9f627651a5749daafb0e29a7a4c))Move @patternslib/patternslib dependency to peerDependencies and set to any version to avoid version conflicts when this package is a dependency of another Patternslib based package.
+
+* **Build:** Add @patternslib/patternslib also to devDependencies so that we get it installed. ([afd04d6](https://github.com/patternslib/pat-code-editor/commit/afd04d6403a8a69725c3c37049a9e2616ea5e003))
+
+* **Build:** Add keyword "patternslib" to package.json. ([9edac4c](https://github.com/patternslib/pat-code-editor/commit/9edac4ccd42982b662bb663a5aaa5217f80b2f04))
+
+* **Build:** Extend jest.config.js from Patternslib and reuse their setupTests file too. ([3f2fcd0](https://github.com/patternslib/pat-code-editor/commit/3f2fcd0b7684aa730159c223ad543f2bd8160d77))
+
+* **Build:** Keep yarn.lock in repository. ([5762dab](https://github.com/patternslib/pat-code-editor/commit/5762dab299c80ef6355bea5ad2337e6e07528ffa))
+
+* **Build:** Makefile - Allow OTP when publishing to npm, build bundles and publish them on GitHub, add pre-release targets. ([9fabaea](https://github.com/patternslib/pat-code-editor/commit/9fabaeae4857bb658ab2a508b27f43a9dcb7cb21))
+
+* **Build:** Remove dependency regenerator-runtime except from test setup. The async/await runtime handling is already built-in in current Babel. ([2ed4cb2](https://github.com/patternslib/pat-code-editor/commit/2ed4cb25a587951d8d76466a7a8e3f041d1154c4))
+
+* **Build:** Update GitHub actions setup. ([3a8bbab](https://github.com/patternslib/pat-code-editor/commit/3a8bbab739fdaaecb04ef44cb85accd60323c0c0))
+
+* **Build:** Upgrade and cleanup dependencies. ([20fb5db](https://github.com/patternslib/pat-code-editor/commit/20fb5db11deec8de8e260f0980eecaeeb9a31ef3))
+
+* **Build:** Upgrade codejar and prismjs. ([663e3b6](https://github.com/patternslib/pat-code-editor/commit/663e3b6b3e2ae237c299dfdfac18c54cad0b83ba))
 
 ### [2.1.2](https://github.com/patternslib/pat-code-editor/compare/2.1.1...2.1.2) (2022-04-09)
 
