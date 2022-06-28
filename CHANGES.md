@@ -2,6 +2,16 @@
 
 
 
+## [3.0.0](https://github.com/patternslib/pat-code-editor/compare/3.0.0-alpha.0...3.0.0) (2022-06-28)
+
+
+### Maintenance
+
+
+* @patternslib/patternslib needs to be installed. Adding to devDependencies to avoid version clashes with other packages depending on it. ([acad414](https://github.com/patternslib/pat-code-editor/commit/acad41482c2382aa237f9dbe72eee507994ae139))
+
+* Upgrade to @patternslib/dev 2.2.0 and adapt module federation config. ([095ae11](https://github.com/patternslib/pat-code-editor/commit/095ae111590d89f3195bac5eeeb058f9ae6f1bb8))
+
 ## [3.0.0-alpha.0](https://github.com/patternslib/pat-code-editor/compare/2.1.2...3.0.0-alpha.0) (2022-06-15)
 
 
