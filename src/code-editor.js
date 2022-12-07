@@ -1,6 +1,7 @@
-import Base from "@patternslib/patternslib/src/core/base";
+import { BasePattern } from "@patternslib/patternslib/src/core/basepattern";
 import Parser from "@patternslib/patternslib/src/core/parser";
 import events from "@patternslib/patternslib/src/core/events";
+import registry from "@patternslib/patternslib/src/core/registry";
 import utils from "@patternslib/patternslib/src/core/utils";
 
 export const parser = new Parser("code-editor");
@@ -17,13 +18,12 @@ parser.addArgument("preserve-ident", true);
 parser.addArgument("add-closing", true);
 parser.addArgument("history", true);
 
-export default Base.extend({
-    name: "code-editor",
-    trigger: ".pat-code-editor",
+class Pattern extends BasePattern {
+    static name = "code-editor";
+    static trigger = ".pat-code-editor";
+    static parser = parser;
 
     async init() {
-        this.options = parser.parse(this.el, this.options);
-
         const CodeJar = (await import("codejar")).CodeJar;
         const Prism = (await import("prismjs")).default;
 
@@ -90,5 +90,10 @@ export default Base.extend({
                 this.el.dispatchEvent(events.input_event());
             });
         }
-    },
-});
+    }
+}
+
+registry.register(Pattern);
+
+export default Pattern;
+export { Pattern };
