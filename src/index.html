@@ -7,6 +7,24 @@
   </head>
   <body>
 
+    <h2>HTML example with textarea</h2>
+    <textarea class="pat-code-editor language-html"
+         autocomplete="off"
+         data-pat-code-editor="theme: dark"
+    >
+      &lt;textarea>
+        &lt;html>
+          &lt;head>
+            &lt;title>My page&lt;/title>
+          &lt;/head>
+          &lt;body>
+            &lt;h1>My page&lt;/h1>
+            &lt;p>My page is awesome!&lt;/p>
+          &lt;/body>
+        &lt;/html>
+      &lt;/textarea>
+    </textarea>
+
     <h2>JavaScript example with textarea</h2>
     <textarea class="pat-code-editor"
          autocomplete="off"
@@ -22,10 +40,9 @@ init(document.querySelector(".pat-code-editor"));
     </textarea>
 
     <h2>Python example with content editable</h2>
-    <pre><code class="pat-code-editor"
+    <pre><code class="pat-code-editor language-python"
          autocomplete="off"
-         contenteditable=""
-         data-pat-code-editor="language: python; theme: okaidia"
+         contenteditable
     >
 import this;
 
