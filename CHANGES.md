@@ -2,6 +2,39 @@
 
 
 
+## [4.0.0](https://github.com/patternslib/pat-code-editor/compare/3.0.0...4.0.0) (2022-12-08)
+
+
+### Features
+
+
+* **Build:** Include the build in the npm package. ([f14bd97](https://github.com/patternslib/pat-code-editor/commit/f14bd970aa02206001ba04d2b0af314231ae578a))The compiled build is now included in npm packages by including the dist
+directory in .npmignore. To not increase the package size too much the
+JavaScript map files are not included. Now you can include Patternslib
+by using unpkg or jsDelivr like so:
+
+https://unpkg.com/@patternslib/pat-code-editor@4.0.0/dist/bundle.min.js
+or
+https://cdn.jsdelivr.net/npm/@patternslib/pat-code-editor@4.0.0/dist/bundle.min.js
+
+
+### Maintenance
+
+
+* Add HTML example to demo. ([2c94b6c](https://github.com/patternslib/pat-code-editor/commit/2c94b6c9a0575ac16e34d9523a2131e618331e73))
+
+* Update bundle in demo to correct URL. ([4d14b05](https://github.com/patternslib/pat-code-editor/commit/4d14b05828d79ae0a01fd9e8b088588de783f52d))
+
+* Update webpack and bundle config. ([0ff2c88](https://github.com/patternslib/pat-code-editor/commit/0ff2c886b83e92dae1f250d2b9f0178ce4ea138e))
+
+* Upgrade to class based pattern. ([e7ebe0b](https://github.com/patternslib/pat-code-editor/commit/e7ebe0b75d8afad214fd0994e095e9f6556b29ce))
+
+
+### Breaking Changes
+
+
+* Re-implement using highlight.js. ([9b3fb47](https://github.com/patternslib/pat-code-editor/commit/9b3fb477284bb3a88a43832fc9a580f559ee467c))
+
 ## [3.0.0](https://github.com/patternslib/pat-code-editor/compare/3.0.0-alpha.0...3.0.0) (2022-06-28)
 
 
