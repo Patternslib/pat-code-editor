@@ -6,11 +6,26 @@
     <script src="/bundle.min.js"></script>
   </head>
   <body>
+    <textarea name="" id="aha" autocomplete="off">
+
+      &lt;textarea>
+        &lt;html>
+          &lt;head>
+            &lt;title>My page&lt;/title>
+          &lt;/head>
+          &lt;body>
+            &lt;h1>My page&lt;/h1>
+            &lt;p>My page is awesome!&lt;/p>
+          &lt;/body>
+        &lt;/html>
+      &lt;/textarea>
+
+    </textarea>
+    <div id="ahb" contenteditable></div>
 
     <h2>HTML example with textarea</h2>
     <textarea class="pat-code-editor language-html"
          autocomplete="off"
-         data-pat-code-editor="theme: dark"
     >
       &lt;textarea>
         &lt;html>
@@ -28,7 +43,7 @@
     <h2>JavaScript example with textarea</h2>
     <textarea class="pat-code-editor"
          autocomplete="off"
-         data-pat-code-editor="language: javascript; theme: okaidia"
+         data-pat-code-editor="language: javascript"
     >
 import pattern from "./src/code-editor";
 
@@ -40,22 +55,20 @@ init(document.querySelector(".pat-code-editor"));
     </textarea>
 
     <h2>Python example with content editable</h2>
-    <pre><code class="pat-code-editor language-python"
+    <code class="pat-code-editor language-python"
          autocomplete="off"
          contenteditable
-    >
-import this;
+    >import this;
 
 def fun(val):
     print(val*3)
 
-fun("helo, ")
-    </code></pre>
+fun("helo, ")</code>
 
     <h2>CSS example with textarea</h2>
-    <textarea class="pat-code-editor"
+    <textarea class="pat-code-editor language-css"
               autocomplete="off"
-              data-pat-code-editor="language: css; tab: '  '; theme: okaidia"
+              data-pat-code-editor="tab: '  '"
     >
 body {
   background-color: red;
@@ -64,9 +77,9 @@ body {
     </textarea>
 
     <h2>XML example with textarea</h2>
-    <textarea class="pat-code-editor"
+    <textarea class="pat-code-editor language-xml"
               autocomplete="off"
-              data-pat-code-editor="language: xml; tab: '  '; theme: okaidia"
+              data-pat-code-editor="tab: '  '"
     >
 &lt;some level="1"&gt;
  &lt;xml level="2"&gt;

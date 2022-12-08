@@ -7,20 +7,19 @@ describe("pat-code-editor", () => {
         document.body.innerHTML = "";
     });
 
-    it("is initialized correctly", async () => {
+    it("1 - is initialized correctly", async () => {
         document.body.innerHTML = `
             <textarea
-                class="pat-code-editor"
-                data-pat-code-editor="language: javascript"/>`;
+                class="pat-code-editor language-javascript"></textarea>`;
 
         const instance = new Pattern(document.querySelector(".pat-code-editor"));
-        events.await_pattern_init(instance);
+        await events.await_pattern_init(instance);
 
         expect(document.querySelectorAll("pre code").length).toBe(1);
         expect(document.querySelector("textarea").getAttribute("hidden")).toBe("");
     });
 
-    it("handles escaped content correctly", async () => {
+    it("2 - handles escaped content correctly", async () => {
         const unescaped = `<hello attribute="value">this & that</hello>`;
         const escaped = `&lt;hello attribute=&quot;value&quot;&gt;this &amp; that&lt;/hello&gt;`;
 
@@ -33,16 +32,21 @@ describe("pat-code-editor", () => {
         `;
 
         const instance = new Pattern(document.querySelector(".pat-code-editor"));
-        events.await_pattern_init(instance);
+        await events.await_pattern_init(instance);
 
+        const el = document.querySelector("textarea");
         const editor_el = document.querySelector("pre code");
+
         expect(editor_el.textContent.trim()).toBe(unescaped);
 
-        expect(editor_el.querySelectorAll(".token").length).toBeGreaterThan(0);
+        editor_el.dispatchEvent(new Event("keyup")); // codejar listens on keyup.
+        expect(el.value).toBe(unescaped);
+
+        expect(editor_el.querySelectorAll(".hljs-string").length).toBeGreaterThan(0);
         expect(editor_el.innerHTML.includes("&lt;")).toBe(true);
     });
 
-    it("Emits input events on update.", async () => {
+    it("3 - Emits input events on update.", async () => {
         document.body.innerHTML = `
             <textarea class="pat-code-editor"></textarea>
         `;
@@ -50,7 +54,7 @@ describe("pat-code-editor", () => {
         const el = document.querySelector(".pat-code-editor");
 
         const instance = new Pattern(el);
-        events.await_pattern_init(instance);
+        await events.await_pattern_init(instance);
 
         const editor_el = document.querySelector("pre code");
 
