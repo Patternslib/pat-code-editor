@@ -1,12 +1,12 @@
-import Base from "@patternslib/patternslib/src/core/base";
+import { BasePattern } from "@patternslib/patternslib/src/core/basepattern";
 import Parser from "@patternslib/patternslib/src/core/parser";
 import events from "@patternslib/patternslib/src/core/events";
-import utils from "@patternslib/patternslib/src/core/utils";
+import registry from "@patternslib/patternslib/src/core/registry";
 
 export const parser = new Parser("code-editor");
 parser.addArgument("language", null); // programming language to use.
 parser.addArgument("linenumbers", false);
-parser.addArgument("theme", null); // theme to use.
+parser.addArgument("theme", "dark"); // dark or light or any other theme variant.
 
 // CodeJar options
 parser.addArgument("tab", "    "); // The tab-string. "\t" for real tabs.
@@ -17,59 +17,97 @@ parser.addArgument("preserve-ident", true);
 parser.addArgument("add-closing", true);
 parser.addArgument("history", true);
 
-export default Base.extend({
-    name: "code-editor",
-    trigger: ".pat-code-editor",
+const language_mapping = {
+    atom: "xml",
+    html: "xml",
+    plist: "xml",
+    rss: "xml",
+    svg: "xml",
+    wsf: "xml",
+    xhtml: "xml",
+    xjb: "xml",
+    xsd: "xml",
+    xsl: "xml",
+};
+
+class Pattern extends BasePattern {
+    static name = "code-editor";
+    static trigger = ".pat-code-editor";
+    static parser = parser;
 
     async init() {
-        this.options = parser.parse(this.el, this.options);
-
         const CodeJar = (await import("codejar")).CodeJar;
-        const Prism = (await import("prismjs")).default;
+        const hljs = (await import("highlight.js/lib/core")).default;
+        let el = this.el;
 
-        let prism_wrapper = Prism.highlightElement;
-        if (this.options.linenumbers) {
-            const linenumbers = (await import("codejar/linenumbers")).withLineNumbers;
-            prism_wrapper = linenumbers(Prism.highlightElement);
+        // Set and load the theme.
+        let theme;
+        if (this.options.theme === "light") {
+            theme = "stackoverflow-light";
+        } else if (this.options.theme === "dark") {
+            theme = "stackoverflow-dark";
+        } else {
+            theme = this.options.theme;
+        }
+        import(`highlight.js/styles/${theme}.css`);
+        if (window.__patternslib_import_styles) {
+            import("./_code-editor.scss");
         }
 
-        let el = this.el;
+        // Custom hightlighting function, as of:
+        // https://github.com/antonmedv/codejar/blob/master/index.html
+        const highlight = (editor) => {
+            // highlight.js does not trim old tags,
+            // let's do it by this hack.
+            editor.textContent = editor.textContent;
+            hljs.highlightElement(editor);
+        };
+        let highlight_wrapper = highlight;
+
+        // Optional line numbers.
+        if (this.options.linenumbers) {
+            const linenumbers = (await import("codejar/linenumbers")).withLineNumbers;
+            highlight_wrapper = linenumbers(highlight, {
+                class: `codejar-linenumbers ${theme}`,
+            });
+        }
+
+        // Import and register the language.
+        let language = [...el.classList].filter((it) => it.startsWith("language-"))[0];
+        language = language ? language.replace("language-", "") : this.options.language;
+        language = language || "plaintext";
+        const hljs_language = (
+            await import(
+                `highlight.js/lib/languages/${language_mapping[language] || language}`
+            )
+        ).default;
+        hljs.registerLanguage(language, hljs_language);
+
+        // Create a editor element in case of an input element.
         if (["textarea", "input"].includes(this.el.nodeName.toLowerCase())) {
-            const unescaped_html = utils.unescape_html(this.el.value);
-            const language_class = this.options.language
-                ? `language-${this.options.language}`
-                : "";
             const pre_el = document.createElement("pre");
-            el = document.createElement("code");
-            el.setAttribute("class", language_class);
-            el.setAttribute("contenteditable", "");
-            el.style.display = "block";
-            el.textContent = unescaped_html;
-            pre_el.append(el);
+            pre_el.innerHTML = `<code contenteditable></code>`;
+            el = pre_el.querySelector("code");
+            el.textContent = this.el.value; // value is already unescaped.
             this.el.parentNode.insertBefore(pre_el, this.el);
             this.el.setAttribute("hidden", "");
         }
 
-        if (this.options.language) {
-            el.classList.add(`language-${this.options.language}`);
-        }
-
-        el.classList.add(`theme-${this.options.theme || "default"}`);
-
-        import(
-            `prismjs/themes/prism${
-                this.options.theme ? "-" + this.options.theme : ""
-            }.css`
+        // Add some classes to the editor element.
+        el.classList.add(
+            "code-editor",
+            `theme-${this.options.theme}`,
+            `language-${language}`
         );
-        //import("./code-editor.scss");
 
-        // Allow spaces withing quotes to be added as tab argument.
+        // Allow spaces within quotes to be added as tab argument.
         // Replace escaped tab character with real tab.
         const tab = this.options.tab
             .replace(/'/g, "") // Allow spaces within quotes
             .replace(/"/g, "")
             .replace(/\\t/g, "\t"); // Replace double escaped tab character
 
+        // Create the editor.
         const config = {
             tab: tab,
             indentOn: new RegExp(this.options.indentOn),
@@ -79,16 +117,21 @@ export default Base.extend({
             addClosing: this.options.addClosing,
             history: this.options.history,
         };
+        this.codeeditor = CodeJar(el, highlight_wrapper, config);
 
-        this.codeeditor = CodeJar(el, prism_wrapper, config);
-
+        // Update the input element.
         if (el !== this.el) {
             // Update <textarea> or <input>, if one of these were the
             // initializing elements.
             this.codeeditor.onUpdate((code) => {
-                this.el.value = code;
+                this.el.value = code.trim();
                 this.el.dispatchEvent(events.input_event());
             });
         }
-    },
-});
+    }
+}
+
+registry.register(Pattern);
+
+export default Pattern;
+export { Pattern };
