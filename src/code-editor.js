@@ -44,7 +44,7 @@ class Pattern extends BasePattern {
         let theme;
         if (this.options.theme === "light") {
             theme = "stackoverflow-light";
-        } else if (this.options.theme === "dark") {
+        } else if (this.options.theme === "dark" || this.options.theme === "okaidia") {
             theme = "stackoverflow-dark";
         } else {
             theme = this.options.theme;
