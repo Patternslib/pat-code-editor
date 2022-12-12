@@ -2,6 +2,26 @@
 
 
 
+## [4.0.1](https://github.com/patternslib/pat-code-editor/compare/4.0.0...4.0.1) (2022-12-12)
+
+
+### Bug Fixes
+
+
+* Add fallback for okaidia theme which exists in PrismJS but not in Highlight.js ([6f5c9d8](https://github.com/patternslib/pat-code-editor/commit/6f5c9d878ed307ff0d8530c8008e06269ab876fc))
+
+* Await for styles import, otherwise theme might not be applied. ([441033d](https://github.com/patternslib/pat-code-editor/commit/441033d36826bdc01a5578d0b64348d68738de46))
+
+
+### Maintenance
+
+
+* Include dist/ and src/ in the npm package. ([d96dc89](https://github.com/patternslib/pat-code-editor/commit/d96dc89b700c134cecd8f7b6051d739df9fd0a9d))
+
+* Update demo - fully escape HTML example, remove debugging markup. ([ae39fc2](https://github.com/patternslib/pat-code-editor/commit/ae39fc2a65b9f219b1bf35429bc2f471ac151c48))
+
+* Use browserslist defaults. ([5c0f314](https://github.com/patternslib/pat-code-editor/commit/5c0f314bdd3686663d6a4751e3abb33f63633305))
+
 ## [4.0.0](https://github.com/patternslib/pat-code-editor/compare/3.0.0...4.0.0) (2022-12-08)
 
 
