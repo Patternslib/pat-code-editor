@@ -25,8 +25,7 @@
         "/src"
     ],
     "browserslist": [
-        ">0.2%",
-        "not dead"
+        "defaults"
     ],
     "keywords": [
         "patternslib"
