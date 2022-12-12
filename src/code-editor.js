@@ -49,9 +49,11 @@ class Pattern extends BasePattern {
         } else {
             theme = this.options.theme;
         }
-        import(`highlight.js/styles/${theme}.css`);
+
+        // Need to await the style import, otherwise theme might not be applied.
+        await import(`highlight.js/styles/${theme}.css`);
         if (window.__patternslib_import_styles) {
-            import("./_code-editor.scss");
+            await import("./_code-editor.scss");
         }
 
         // Custom hightlighting function, as of:
