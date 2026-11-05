@@ -6,8 +6,8 @@
     "main": "./src/code-editor.js",
     "packageManager": "pnpm@12.16.1",
     "dependencies": {
-        "codejar": "^3.6.0",
-        "highlight.js": "<11"
+        "codejar": "^4.3.0",
+        "highlight.js": "^11.12.0"
     },
     "devDependencies": {
         "@patternslib/dev": "^4.4.0",
