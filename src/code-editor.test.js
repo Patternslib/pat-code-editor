@@ -19,6 +19,23 @@ describe("pat-code-editor", () => {
         expect(document.querySelector("textarea").getAttribute("hidden")).toBe("");
     });
 
+    it("highlights repeated updates and refreshes line numbers", async () => {
+        document.body.innerHTML = `<textarea class="pat-code-editor"
+            data-pat-code-editor="language: javascript; linenumbers: true">const x = 1;</textarea>`;
+        const instance = new Pattern(document.querySelector("textarea"));
+        await events.await_pattern_init(instance);
+        const editor = document.querySelector("code");
+        expect(editor.querySelector(".hljs-keyword")).not.toBeNull();
+        instance.codeeditor.updateCode('const value = "hello";\nconst next = 2;');
+        expect(editor.querySelector(".hljs-string").textContent).toBe('"hello"');
+        expect(document.querySelector(".codejar-linenumber").innerText).toBe("1\n2\n");
+        instance.codeeditor.updateCode('const value = "again";');
+        expect(editor.querySelector(".hljs-string").textContent).toBe('"again"');
+        expect(document.querySelector(".codejar-linenumber").innerText).toBe("1\n");
+        expect(document.querySelector("textarea").value).toBe('const value = "again";');
+        instance.codeeditor.destroy();
+    });
+
     it("2 - handles escaped content correctly", async () => {
         const unescaped = `<hello attribute="value">this & that</hello>`;
         const escaped = `&lt;hello attribute=&quot;value&quot;&gt;this &amp; that&lt;/hello&gt;`;
@@ -39,7 +56,7 @@ describe("pat-code-editor", () => {
 
         expect(editor_el.textContent.trim()).toBe(unescaped);
 
-        editor_el.dispatchEvent(new Event("keyup")); // codejar listens on keyup.
+        editor_el.dispatchEvent(new KeyboardEvent("keyup", { key: "a" })); // codejar listens on keyup.
         expect(el.value).toBe(unescaped);
 
         expect(editor_el.querySelectorAll(".hljs-string").length).toBeGreaterThan(0);
@@ -64,7 +81,7 @@ describe("pat-code-editor", () => {
         });
 
         editor_el.innerHTML = "okay-ish";
-        editor_el.dispatchEvent(new Event("keyup")); // codejar listens on keyup.
+        editor_el.dispatchEvent(new KeyboardEvent("keyup", { key: "a" })); // codejar listens on keyup.
         await utils.timeout(1);
 
         expect(el.value).toBe("okay-ish");

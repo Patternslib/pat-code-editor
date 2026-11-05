@@ -3,6 +3,8 @@ import Parser from "@patternslib/patternslib/src/core/parser";
 import events from "@patternslib/patternslib/src/core/events";
 import registry from "@patternslib/patternslib/src/core/registry";
 
+import { languages, themes } from "./highlight-loaders";
+
 export const parser = new Parser("code-editor");
 parser.addArgument("language", null); // programming language to use.
 parser.addArgument("linenumbers", false);
@@ -51,7 +53,7 @@ class Pattern extends BasePattern {
         }
 
         // Need to await the style import, otherwise theme might not be applied.
-        await import(`highlight.js/styles/${theme}.css`);
+        await themes[theme]();
         if (window.__patternslib_import_styles) {
             await import("./_code-editor.scss");
         }
@@ -62,14 +64,16 @@ class Pattern extends BasePattern {
             // highlight.js does not trim old tags,
             // let's do it by this hack.
             editor.textContent = editor.textContent;
+            delete editor.dataset.highlighted;
             hljs.highlightElement(editor);
         };
         let highlight_wrapper = highlight;
 
         // Optional line numbers.
         if (this.options.linenumbers) {
-            const linenumbers = (await import("codejar/linenumbers")).withLineNumbers;
-            highlight_wrapper = linenumbers(highlight, {
+            const { withLineNumbers } = await import("codejar-linenumbers");
+            await import("codejar-linenumbers/es/codejar-linenumbers.css");
+            highlight_wrapper = withLineNumbers(highlight, {
                 class: `codejar-linenumbers ${theme}`,
             });
         }
@@ -79,9 +83,7 @@ class Pattern extends BasePattern {
         language = language ? language.replace("language-", "") : this.options.language;
         language = language || "plaintext";
         const hljs_language = (
-            await import(
-                `highlight.js/lib/languages/${language_mapping[language] || language}`
-            )
+            await languages[language_mapping[language] || language]()
         ).default;
         hljs.registerLanguage(language, hljs_language);
 
@@ -120,6 +122,7 @@ class Pattern extends BasePattern {
             history: this.options.history,
         };
         this.codeeditor = CodeJar(el, highlight_wrapper, config);
+        this.codeeditor.updateCode(el.textContent, false);
 
         // Update the input element.
         if (el !== this.el) {
