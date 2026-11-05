@@ -4,6 +4,7 @@
     "description": "A pattern for a code-editor",
     "license": "MIT",
     "main": "./src/code-editor.js",
+    "packageManager": "pnpm@12.16.1",
     "dependencies": {
         "codejar": "^3.6.0",
         "highlight.js": "<11"
