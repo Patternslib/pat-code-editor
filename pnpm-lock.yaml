@@ -167,11 +167,14 @@ importers:
   .:
     dependencies:
       codejar:
-        specifier: ^3.6.0
-        version: 3.7.0
+        specifier: ^4.3.0
+        version: 4.3.0
+      codejar-linenumbers:
+        specifier: ^1.0.1
+        version: 1.0.1(codejar@4.3.0)
       highlight.js:
-        specifier: <11
-        version: 10.7.3
+        specifier: ^11.12.0
+        version: 11.12.0
     devDependencies:
       '@patternslib/dev':
         specifier: ^4.4.0
@@ -2382,8 +2385,13 @@ packages:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
 
-  codejar@3.7.0:
-    resolution: {integrity: sha512-rqyDu2zNwfu1EhXI++LEMQDzhykS+V0BV52RemtCj5lczgTgWSufyEa+tS7RP7qCXH/WXOkU0eIthmFUzvG78Q==}
+  codejar-linenumbers@1.0.1:
+    resolution: {integrity: sha512-nyJanRPlDUzWHO7HcffKpjRC7f6yU/SNQIHXhWLnZ6NuZlnFwGlo42slBHjjmK6+tcREJ7hVEwIJ3kAiYNq7lQ==}
+    peerDependencies:
+      codejar: '>= 4.0.0'
+
+  codejar@4.3.0:
+    resolution: {integrity: sha512-A7BlrtD2oHR4xsABs/lLvDNxiPxkx71SuyHhcilBHbPMASpQs4d1AG2XjDSAm7y40RmfXbSGbMBhllGy//CDOA==}
 
   collect-v8-coverage@1.0.3:
     resolution: {integrity: sha512-1L5aqIkwPfiodaMgQunkF1zRhNqifHBmtbbbxcr6yVxxBnliw4TDOW6NxpO8DJLgJ16OT+Y4ztZqP6p/FtXnAw==}
@@ -3063,6 +3071,10 @@ packages:
 
   highlight.js@10.7.3:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
+
+  highlight.js@11.12.0:
+    resolution: {integrity: sha512-nbfWpyRMcMrPMmDwJB+dhX/eiaPKtc2RB+0QZskqJ3WjRA/FDS0e9hZrx8EC/lbEv8gXy98FcDbNa/dspAaJMg==}
+    engines: {node: '>=12.0.0'}
 
   hookified@1.15.1:
     resolution: {integrity: sha512-MvG/clsADq1GPM2KGo2nyfaWVyn9naPiXrqIe4jYjXNZQt238kWyOGrsyc/DmRAQ+Re6yeo6yX/yoNCG5KAEVg==}
@@ -4092,6 +4104,10 @@ packages:
   pretty-format@30.5.1:
     resolution: {integrity: sha512-byhRAPguVKMQIj4kjJwJ5lAskVhfuiSdiYl/aLTWpgkGEmic2jYhJh1yE9ih8Ox44Xg9ccCT11/S6QrzSJuNrg==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
+
+  prismjs@1.30.0:
+    resolution: {integrity: sha512-DEvV2ZF2r2/63V+tK8hQvrR2ZGn10srHbXviTlcv7Kpzw8jWiNTqbVgjO3IY8RxrrOUF8VPMQQFysYYYv0YZxw==}
+    engines: {node: '>=6'}
 
   protocols@2.0.2:
     resolution: {integrity: sha512-hHVTzba3wboROl0/aWRRG9dMytgH6ow//STBZh43l/wQgmMhYhOFi0EHWAPtoCz9IAUymsyP0TSBHkhgMEGNnQ==}
@@ -7631,7 +7647,12 @@ snapshots:
 
   co@4.6.0: {}
 
-  codejar@3.7.0: {}
+  codejar-linenumbers@1.0.1(codejar@4.3.0):
+    dependencies:
+      codejar: 4.3.0
+      prismjs: 1.30.0
+
+  codejar@4.3.0: {}
 
   collect-v8-coverage@1.0.3: {}
 
@@ -8289,6 +8310,8 @@ snapshots:
       function-bind: 1.1.2
 
   highlight.js@10.7.3: {}
+
+  highlight.js@11.12.0: {}
 
   hookified@1.15.1: {}
 
@@ -9428,6 +9451,8 @@ snapshots:
       '@jest/react-is-19': react-is@19.3.1
       '@jest/schemas': 30.5.0
       ansi-styles: 5.2.0
+
+  prismjs@1.30.0: {}
 
   protocols@2.0.2: {}
 
