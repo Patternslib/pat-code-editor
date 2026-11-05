@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>code editor demo</title>
     <script src="/bundle.min.js"></script>
   </head>
   <body>
     <h2>HTML example with textarea</h2>
     <textarea class="pat-code-editor language-html"
-         autocomplete="off"
+              autocomplete="off"
     >
       &lt;textarea&gt;
         &lt;html&gt;
@@ -23,10 +23,13 @@
       &lt;/textarea&gt;
     </textarea>
 
-    <h2>JavaScript example with textarea</h2>
+    <h2>JavaScript example with textarea and line numbers</h2>
     <textarea class="pat-code-editor"
-         autocomplete="off"
-         data-pat-code-editor="language: javascript"
+              autocomplete="off"
+              data-pat-code-editor="
+                  language: javascript;
+                  linenumbers: true;
+              "
     >
 import pattern from "./src/code-editor";
 
@@ -39,8 +42,8 @@ init(document.querySelector(".pat-code-editor"));
 
     <h2>Python example with content editable</h2>
     <code class="pat-code-editor language-python"
-         autocomplete="off"
-         contenteditable
+          autocomplete="off"
+          contenteditable=""
     >import this;
 
 def fun(val):
